@@ -190,3 +190,11 @@
 	path = helix-syntax/languages/tree-sitter-git-rebase
 	url = https://github.com/the-mikedavis/tree-sitter-git-rebase.git
 	shallow = true
+[submodule "helix-syntax/languages/tree-sitter-rescript"]
+	path = helix-syntax/languages/tree-sitter-rescript
+	url = https://github.com/nkrkv/tree-sitter-rescript
+	shallow = true
+[submodule "helix-syntax/languages/tree-sitter-elm"]
+	path = helix-syntax/languages/tree-sitter-elm
+	url = https://github.com/elm-tooling/tree-sitter-elm
+	shallow = true
