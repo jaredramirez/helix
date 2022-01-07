@@ -4,8 +4,8 @@
 ;------------
 
 ; Escaped identifiers like \"+."
-((value_identifier) @constant.macro
- (#match? @constant.macro "^\\.*$"))
+((value_identifier) @function.macro
+ (#match? @function.macro "^\\.*$"))
 
 [
   (type_identifier)
@@ -18,17 +18,17 @@
   (polyvar_identifier)
 ] @constant
 
-(property_identifier) @property
+(property_identifier) @variable.other.member
 (module_identifier) @namespace
 
-(jsx_identifier) @module
-(jsx_attribute (property_identifier) @attribute)
+(jsx_identifier) @tag
+(jsx_attribute (property_identifier) @variable.parameter)
 
 ; Parameters
 ;----------------
 
-(list_pattern (value_identifier) @parameter)
-(spread_pattern (value_identifier) @parameter)
+(list_pattern (value_identifier) @variable.parameter)
+(spread_pattern (value_identifier) @variable.parameter)
 
 ; String literals
 ;----------------
@@ -42,8 +42,8 @@
   "${" @punctuation.bracket
   "}" @punctuation.bracket) @embedded
 
-(character) @string.special
-(escape_sequence) @string.escape
+(character) @constant.character
+(escape_sequence) @constant.character.escape
 
 ; Other literals
 ;---------------
@@ -53,7 +53,7 @@
   (false)
 ] @constant.builtin
 
-(number) @number
+(number) @constant.numeric
 (polyvar) @constant
 (polyvar_string) @constant
 
@@ -64,9 +64,9 @@
  (formal_parameters (value_identifier))
  (positional_parameter (value_identifier))
  (labeled_parameter (value_identifier))
-] @parameter
+] @variable.parameter
 
-(function parameter: (value_identifier) @parameter)
+(function parameter: (value_identifier) @variable.parameter)
 
 ; Meta
 ;-----
@@ -75,7 +75,7 @@
  "@"
  "@@"
  (decorator_identifier)
-] @special
+] @label
 
 (extension_identifier) @keyword
 ("%") @keyword
@@ -83,7 +83,7 @@
 ; Misc
 ;-----
 
-(subscript_expression index: (string) @property)
+(subscript_expression index: (string) @variable.other.member)
 (polyvar_type_pattern "#" @constant)
 
 [
@@ -101,6 +101,7 @@
   "private"
   "rec"
   "type"
+  "and"
 ] @keyword
 
 [
@@ -173,7 +174,7 @@
   "?"
   "=>"
   "..."
-] @punctuation.special
+] @punctuation
 
 (ternary_expression ["?" ":"] @operator)
 

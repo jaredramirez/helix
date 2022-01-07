@@ -5,76 +5,83 @@
     "else"
     "let"
     "in"
- ] @keyword.control.elm
-(case) @keyword.control.elm
-(of) @keyword.control.elm
+ ] @keyword.control
+(case) @keyword.control
+(of) @keyword.control
 
-(colon) @keyword.other.elm
-(backslash) @keyword.other.elm
-(as) @keyword.other.elm
-(port) @keyword.other.elm
-(exposing) @keyword.other.elm
-(alias) @keyword.other.elm
-(infix) @keyword.other.elm
+(colon) @keyword.operator
+(backslash) @keyword
+(as) @keyword
+(port) @keyword
+(exposing) @keyword
+(alias) @keyword
+(infix) @keyword
 
-(arrow) @keyword.operator.arrow.elm
+(arrow) @keyword.operator
+(dot) @keyword.operator
 
-(port) @keyword.other.port.elm
+(port) @keyword
 
-(type_annotation(lower_case_identifier) @function.elm)
-(port_annotation(lower_case_identifier) @function.elm)
-(function_declaration_left(lower_case_identifier) @local.function.elm)
-(function_call_expr target: (value_expr) @function.elm)
+(type_annotation(lower_case_identifier) @function)
+(port_annotation(lower_case_identifier) @function)
+(file (value_declaration (function_declaration_left(lower_case_identifier) @function)))
 
-(field_access_expr(value_expr(value_qid)) @local.function.elm)
-(lower_pattern) @local.function.elm
-(record_base_identifier) @local.function.elm
+(field name: (lower_case_identifier) @attribute)
+(field_access_expr(lower_case_identifier) @attribute)
 
-
-(operator_identifier) @keyword.operator.elm
-(eq) @keyword.operator.assignment.elm
+(operator_identifier) @keyword.operator
+(eq) @keyword.operator.assignment
 
 
-"(" @punctuation.section.braces
-")" @punctuation.section.braces
+"(" @punctuation.braces
+")" @punctuation.braces
 
-"[" @punctuation.section.braces
-"]" @punctuation.section.braces
+"[" @punctuation.braces
+"]" @punctuation.braces
 
-"{" @punctuation.section.braces
-"}" @punctuation.section.braces
+"{" @punctuation.braces
+"}" @punctuation.braces
 
-"|" @keyword.other.elm
-"," @punctuation.separator.comma.elm
+"|" @keyword
+"," @punctuation.delimiter
 
-(import) @keyword.other.elm
-(module) @keyword.other.elm
+[
+  "|>"
+] @keyword
 
-(number_constant_expr) @constant.numeric.elm
 
-(type) @keyword.type.elm
+(import) @keyword.other
+(module) @keyword.other
 
-(type_declaration(upper_case_identifier) @storage.type.elm)
-(type_ref) @storage.type.elm
-(type_alias_declaration name: (upper_case_identifier) @storage.type.elm)
+(number_constant_expr) @constant.numeric
 
-(union_variant(upper_case_identifier) @union.elm)
-(union_pattern) @constant.elm
-(value_expr(upper_case_qid(upper_case_identifier)) @union.elm)
+(type) @type
+
+(type_declaration(upper_case_identifier) @type)
+(type_ref) @type
+(type_alias_declaration name: (upper_case_identifier) @type)
+
+(union_pattern constructor: (upper_case_qid (upper_case_identifier) @label (dot) (upper_case_identifier) @variable.other.member)) 
+(union_pattern constructor: (upper_case_qid (upper_case_identifier) @variable.other.member)) 
+
+(union_variant(upper_case_identifier) @variable.other.member)
+(value_expr name: (value_qid (upper_case_identifier) @label))
+(value_expr (upper_case_qid (upper_case_identifier) @label (dot) (upper_case_identifier) @variable.other.member))
+(value_expr(upper_case_qid(upper_case_identifier)) @variable.other.member)
 
 ; comments
-(line_comment) @comment.elm
-(block_comment) @comment.elm
+(line_comment) @comment
+(block_comment) @comment
 
 ; strings
-(string_escape) @character.escape.elm
+(string_escape) @constant.character
 
-(open_quote) @string.elm
-(close_quote) @string.elm
-(regular_string_part) @string.elm
+(open_quote) @string
+(close_quote) @string
+(regular_string_part) @string
 
-(open_char) @char.elm
-(close_char) @char.elm
+(open_char) @constant.character
+(close_char) @constant.character
 
 
 ; glsl
