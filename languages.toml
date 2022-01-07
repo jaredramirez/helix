@@ -552,3 +552,13 @@ auto-format = true
 comment-token = "--"
 language-server = { command = "elm-language-server" }
 indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "sql"
+scope = "source.sql"
+injection-regex = "sql"
+file-types = ["sql"]
+roots = []
+auto-format = true
+comment-token = "--"
+indent = { tab-width = 4, unit = "    " }
