@@ -28,10 +28,10 @@
               let
                 pkgs = common.pkgs;
                 helix = pkgs.fetchgit {
-                  url = "https://github.com/helix-editor/helix.git";
-                  rev = "a8fd33ac012a79069ef1409503a2edcf3a585153";
+                  url = "https://github.com/jaredramirez/helix.git";
+                  rev = "24b5be1565d61039fe827c2148cb7141c9e91743";
                   fetchSubmodules = true;
-                  sha256 = "sha256-5AtOC55ttWT+7RYMboaFxpGZML51ix93wAkYJTt+8JI=";
+                  sha256 = "sha256-IE+QelH5FQjaHz8seQWOV6Qyq4BypVj8RvryZCtt0Ew=";
                 };
               in
               pkgs.runCommand prev.src.name { } ''
