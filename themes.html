@@ -138,11 +138,11 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="themes"><a class="header" href="#themes">Themes</a></h1>
-<p>First you'll need to place selected themes in your <code>themes</code> directory (i.e <code>~/.config/helix/themes</code>), the directory might have to be created beforehand.</p>
-<p>To use a custom theme add <code>theme = &lt;name&gt;</code> to your <a href="./configuration.html"><code>config.toml</code></a> or override it during runtime using <code>:theme &lt;name&gt;</code>.</p>
-<p>The default theme.toml can be found <a href="https://github.com/helix-editor/helix/blob/master/theme.toml">here</a>, and user submitted themes <a href="https://github.com/helix-editor/helix/blob/master/runtime/themes">here</a>. </p>
+<p>To use a theme add <code>theme = &quot;&lt;name&gt;&quot;</code> to your <a href="./configuration.html"><code>config.toml</code></a> at the very top of the file before the first section or select it during runtime using <code>:theme &lt;name&gt;</code>.</p>
 <h2 id="creating-a-theme"><a class="header" href="#creating-a-theme">Creating a theme</a></h2>
-<p>First create a file with the name of your theme as file name (i.e <code>mytheme.toml</code>) and place it in your <code>themes</code> directory (i.e <code>~/.config/helix/themes</code>).</p>
+<p>Create a file with the name of your theme as file name (i.e <code>mytheme.toml</code>) and place it in your <code>themes</code> directory (i.e <code>~/.config/helix/themes</code>). The directory might have to be created beforehand.</p>
+<p>The names &quot;default&quot; and &quot;base16_default&quot; are reserved for the builtin themes and cannot be overridden by user defined themes.</p>
+<p>The default theme.toml can be found <a href="https://github.com/helix-editor/helix/blob/master/theme.toml">here</a>, and user submitted themes <a href="https://github.com/helix-editor/helix/blob/master/runtime/themes">here</a>. </p>
 <p>Each line in the theme file is specified as below:</p>
 <pre><code class="language-toml">key = { fg = &quot;#ffffff&quot;, bg = &quot;#000000&quot;, modifiers = [&quot;bold&quot;, &quot;italic&quot;] }
 </code></pre>
@@ -296,6 +296,7 @@ over it and is merged into the default palette.</p>
 <li><code>repeat</code> - <code>for</code>, <code>while</code>, <code>loop</code></li>
 <li><code>import</code> - <code>import</code>, <code>export</code></li>
 <li><code>return</code></li>
+<li><code>exception</code></li>
 </ul>
 </li>
 <li><code>operator</code> - <code>or</code>, <code>in</code></li>
@@ -324,7 +325,12 @@ over it and is merged into the default palette.</p>
 <li>
 <p><code>markup</code></p>
 <ul>
-<li><code>heading</code></li>
+<li><code>heading</code>
+<ul>
+<li><code>marker</code></li>
+<li><code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code> - heading text for h1 through h6</li>
+</ul>
+</li>
 <li><code>list</code>
 <ul>
 <li><code>unnumbered</code></li>
@@ -335,8 +341,9 @@ over it and is merged into the default palette.</p>
 <li><code>italic</code></li>
 <li><code>link</code>
 <ul>
-<li><code>url</code></li>
-<li><code>label</code></li>
+<li><code>url</code> - urls pointed to by links</li>
+<li><code>label</code> - non-url link references</li>
+<li><code>text</code> - url and image descriptions in links</li>
 </ul>
 </li>
 <li><code>quote</code></li>
@@ -363,6 +370,34 @@ over it and is merged into the default palette.</p>
 </ul>
 <h4 id="interface"><a class="header" href="#interface">Interface</a></h4>
 <p>These scopes are used for theming the editor interface.</p>
+<ul>
+<li><code>markup</code>
+<ul>
+<li><code>normal</code>
+<ul>
+<li><code>completion</code> - for completion doc popup ui</li>
+<li><code>hover</code> - for hover popup ui</li>
+</ul>
+</li>
+<li><code>heading</code>
+<ul>
+<li><code>completion</code> - for completion doc popup ui</li>
+<li><code>hover</code> - for hover popup ui</li>
+</ul>
+</li>
+<li><code>raw</code>
+<ul>
+<li><code>inline</code>
+<ul>
+<li><code>completion</code> - for completion doc popup ui</li>
+<li><code>hover</code> - for hover popup ui</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <table><thead><tr><th>Key</th><th>Notes</th></tr></thead><tbody>
 <tr><td><code>ui.background</code></td><td></td></tr>
 <tr><td><code>ui.cursor</code></td><td></td></tr>
@@ -375,12 +410,12 @@ over it and is merged into the default palette.</p>
 <tr><td><code>ui.statusline</code></td><td>Statusline</td></tr>
 <tr><td><code>ui.statusline.inactive</code></td><td>Statusline (unfocused document)</td></tr>
 <tr><td><code>ui.popup</code></td><td></td></tr>
+<tr><td><code>ui.popup.info</code></td><td></td></tr>
 <tr><td><code>ui.window</code></td><td></td></tr>
 <tr><td><code>ui.help</code></td><td></td></tr>
 <tr><td><code>ui.text</code></td><td></td></tr>
 <tr><td><code>ui.text.focus</code></td><td></td></tr>
-<tr><td><code>ui.info</code></td><td></td></tr>
-<tr><td><code>ui.info.text</code></td><td></td></tr>
+<tr><td><code>ui.text.info</code></td><td></td></tr>
 <tr><td><code>ui.menu</code></td><td></td></tr>
 <tr><td><code>ui.menu.selected</code></td><td></td></tr>
 <tr><td><code>ui.selection</code></td><td>For selections in the editing area</td></tr>
